@@ -1,0 +1,29 @@
+<div *ngIf="book" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="book._id">Book Details</h2>
+    <h2 *ngIf="!book._id">New Book</h2>
+  </div>
+</div>
+<div *ngIf="book" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="book-title">Title</label>
+      <input class="form-control" name="book-title" [(ngModel)]="book.title" placeholder="Title"/>
+    </div>
+    <div class="form-group">
+      <label for="book-author-name">Author name</label>
+      <input class="form-control" name="book-author-name" [(ngModel)]="book.author.name" placeholder="Name"/>
+    </div>
+    <div class="form-group">
+      <label for="book-author-phone-mobile">Mobile</label>
+      <input class="form-control" name="book-author-phone-mobile" [(ngModel)]="book.author.phone.mobile" placeholder="1234567890"/>
+    </div>
+    <div class="form-group">
+      <label for="book-author-phone-work">Work</label>
+      <input class="form-control" name="book-author-phone-work" [(ngModel)]="book.author.phone.work" placeholder="0123456789"/>
+    </div>
+    <button class="btn btn-primary" *ngIf="!book._id" (click)="createBook(book)">Create</button>
+    <button class="btn btn-info" *ngIf="book._id" (click)="updateBook(book)">Update</button>
+    <button class="btn btn-danger" *ngIf="book._id" (click)="deleteBook(book._id)">Delete</button>
+  </form>
+</div>
